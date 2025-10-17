@@ -1,0 +1,9 @@
+# Dossiers d'environnement virtuel (crucial)
+venv/
+.venv/
+env/
+.env/
+
+# Fichiers de cache Python
+__pycache__/
+*.pyc
