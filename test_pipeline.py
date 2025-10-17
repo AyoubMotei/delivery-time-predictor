@@ -67,35 +67,3 @@ def test_seuil_mae():
 
 
 
-
-# def test_format_dimensions():
-#     df = load_data('dataset.csv')
-#     df = clean_data(df)
-#     X_train, X_test, y_train, y_test = split_features_target(df)
-#     preprocessor = create_preprocessor()
-    
-#     # Vérifier les dimensions des données
-#     assert df.shape[0] > 0, "Le DataFrame nettoyé est vide."
-#     assert X_train.shape[0] > 0 and X_test.shape[0] > 0, "Les ensembles d'entraînement ou de test sont vides."
-#     assert y_train.shape[0] > 0 and y_test.shape[0] > 0, "Les cibles d'entraînement ou de test sont vides."
-    
-#     # Vérifier que le préprocesseur transforme correctement les données
-#     X_train_transformed = preprocessor.fit_transform(X_train)
-#     X_test_transformed = preprocessor.transform(X_test)
-#     assert X_train_transformed.shape[0] == X_train.shape[0], "Le nombre de lignes transformées ne correspond pas à l'entraînement."
-#     assert X_test_transformed.shape[0] == X_test.shape[0], "Le nombre de lignes transformées ne correspond pas au test."
-#     assert X_train_transformed.shape[1] > X_train.shape[1], "Le nombre de caractéristiques n'a pas augmenté après transformation."
-#     assert X_test_transformed.shape[1] > X_test.shape[1], "Le   nombre de caractéristiques n'a pas augmenté après transformation."      
-#     print("-> Tests de format et dimensions réussis.")
-    
-    
-    
-# def test_depassement_mae():
-#     """Teste que le MAE des modèles est inférieur à un seuil raisonnable."""
-#     # Exécuter le pipeline complet
-#     mae_rfr, r2_rfr, mae_svr, r2_svr = run_pipeline('dataset.csv')
-    
-#     # Vérifier que le MAE est raisonnable (par exemple, inférieur à 8 minutes)
-#     assert mae_rfr < 8, f"MAE du Random Forest Regressor trop élevé: {mae_rfr}"
-#     assert mae_svr < 8, f"MAE du Support Vector Regressor trop élevé: {mae_svr}"
-#     print("-> Tests de performance MAE réussis.")
