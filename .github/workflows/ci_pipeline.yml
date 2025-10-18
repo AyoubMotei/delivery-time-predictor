@@ -1,0 +1,41 @@
+name: CI Pipeline & Tests
+# Le nom du workflow visible dans l'onglet 'Actions'
+
+on:
+  # Déclenche le workflow à chaque push sur la branche principale
+  push:
+    branches: [ master ]
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+    # Étape 1 : Cloner le code (Syntaxe 'uses' corrigée)
+    - name: Checkout du code
+      uses: actions/checkout@v4
+      
+    # Étape 2 : Configurer Python (Syntaxe 'uses' et 'with' corrigée)
+    - name: Installer Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    # Étape 3 : Installer les dépendances
+    - name: Installer les dépendances
+      run: |
+        python -m pip install --upgrade pip
+        # Installe toutes les dépendances listées dans requirements.txt (méthode propre)
+        pip install -r requirements.txt
+        
+    # Étape 4 : Exécuter le pipeline d'entraînement
+    # Bien que les tests l'appellent, ceci valide que le script d'entraînement principal s'exécute.
+    - name: Entraîner le pipeline (Vérification de la création du modèle)
+      # On force l'exécution du script, même s'il échoue potentiellement si la performance MAE est mauvaise
+      run: python pipeline.py || true
+
+    # Étape 5 : Exécuter les tests (le juge de performance)
+    - name: Exécuter Pytest et Vérification de Performance
+      run: pytest -v
